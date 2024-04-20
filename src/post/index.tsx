@@ -16,11 +16,9 @@ const Post = data => {
     PRSS.init(data);
     (window as any).PRSS = PRSS;
 
-    const {
-        heroImageUrl,
-        featuredImageUrl,
-        sidebarAsideHtml
-    } = PRSS.getProp('vars') as IVars;
+    const { heroImageUrl, featuredImageUrl, sidebarAsideHtml } = PRSS.getProp(
+        'vars'
+    ) as IVars;
 
     const links = PRSS.getJsonProp('vars.links') as ILink[];
 
