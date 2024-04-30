@@ -40,4 +40,3 @@ const Head: FunctionComponent<IProps> = () => {
     );
 };
 
-export default Head;

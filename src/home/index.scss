@@ -1,5 +1,29 @@
 .page.page-home {
-    .card a.card-title {
+  h2 {
+    font-size: 22px;
+    padding: 0 10px 0 0px;
+    position: relative;
+
+    // &:before {
+    //   content: '';
+    //   width: 8px;
+    //   height: 26px;
+    //   background: black;
+    //   border-radius: 20px;
+    //   position: absolute;
+    //   left: 0;
+    // }
+  }
+
+  .card-wrapper {
+    display: flex;
+
+    .card {
+      position: relative;
+      padding: 12px;
+      flex: 1;
+
+      a.card-title {
         padding: 0;
         margin: 0;
         font-size: 22px;
@@ -8,26 +32,16 @@
         margin-bottom: 16px;
         display: block;
         line-height: 30px;
-    }
+      }
 
-    .hero .container {
-        display: none;
-    }
+      .card-body {
+        display: flex;
+        flex-flow: column;
 
-    .main-container section:first-child {
-        padding-top: 0;
-    }
-
-    .content {
-        section {
-            padding-bottom: 35px;
-
-            h2 {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 24px;
-            }
+        .card-text:first-of-type {
+          flex: 1;
         }
+      }
     }
+  }
 }

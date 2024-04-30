@@ -6,7 +6,6 @@ import * as PRSS from 'prss';
 import Header from '../resources/components/Header';
 import Footer from '../resources/components/Footer';
 import Page from '../resources/components/Page';
-
 const Post = data => {
   PRSS.init(data);
   (window as any).PRSS = PRSS;

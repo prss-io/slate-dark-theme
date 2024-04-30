@@ -4,13 +4,6 @@ interface IVars {
     featuredImageAlt?: string;
 
     /**
-     * Hero
-     */
-    heroTitle?: string;
-    heroMessage?: string;
-    heroImageUrl?: string;
-
-    /**
      * Links
      */
     links: ILink[];

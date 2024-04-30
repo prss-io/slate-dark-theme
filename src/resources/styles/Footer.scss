@@ -1,29 +1,30 @@
 .page footer.page-footer {
-    background: rgba(255, 255, 255, 0.02);
-    height: 65px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: -1;
+  background: rgba(255, 255, 255, 0.01);
+  height: 65px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
 
-    .footer-shoutout {
-        opacity: 0.6;
-        transition: 0.3s opacity ease-in-out;
-        text-decoration: none;
-        color: inherit;
+  @media (max-width: 570px) {
+    position: static;
+    border-radius: 20px;
+  }
 
-        &:hover {
-            opacity: 1;
-        }
+  .footer-shoutout {
+    opacity: 0.6;
+    transition: 0.3s opacity ease-in-out;
+    text-decoration: none;
+    color: inherit;
 
-        span {
-            line-height: 15px;
-        }
-
-        .font-weight-bold {
-            font-weight: 500 !important;
-        }
+    &:hover {
+      opacity: 1;
     }
+
+    span {
+      line-height: 15px;
+    }
+  }
 }
