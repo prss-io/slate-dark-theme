@@ -1,7 +1,8 @@
 {
-    "title": "Slate Dark",
+  "title": "Slate Dark",
   "type": "blog",
   "parser": "react",
+  "isSSR": true,
   "siteVars": {
     "logoImageUrl": {
       "type": "image",

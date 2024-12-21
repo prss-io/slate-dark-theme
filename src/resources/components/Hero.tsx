@@ -1,4 +1,4 @@
-import '../styles/Hero.scss';
+import '../styles/Hero.css';
 import React, { FunctionComponent, ReactNode } from 'react';
 
 interface IProps {
