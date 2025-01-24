@@ -1,5 +1,6 @@
 .page header.page-header {
   user-select: none;
+  padding-top: 20px;
 }
 
 .page header.page-header .header-nav {
