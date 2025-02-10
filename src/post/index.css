@@ -9,23 +9,33 @@
 .page.page-post h5,
 .page.page-post h6 {
   font-family: 'Roboto', sans-serif;
-  font-weight: 400;
 }
 
 .page.page-post h1 {
-  font-size: 31px;
-  font-weight: 400;
+  font-size: 44px;
+  font-weight: 700;
+}
+
+.page.page-post h2 {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
 }
 
 .page.page-post h3 {
-  font-size: 24px;
+  margin-top: 40px;
+  margin-bottom: 15px;
   font-weight: 700;
-  margin: 30px 0;
+}
+
+.page.page-post h4 {
+  margin-top: 25px;
 }
 
 .page.page-post h5 {
   margin-top: 35px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .page.page-post strong {

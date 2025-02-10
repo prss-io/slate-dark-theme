@@ -18,7 +18,7 @@
   color: #eaeaea;
 }
 
-.page h4 {
+.page:not(.page-post) h4 {
   font-weight: 600;
 }
 
