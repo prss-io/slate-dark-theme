@@ -46,7 +46,7 @@ const Post = data => {
                       <h1 className="mb-0">{postTitle}</h1>
                       {createdAt && (
                         <div
-                          className="text-muted mt-3 date post-date d-flex align-items-center"
+                          className="text-muted mt-4 date post-date d-flex align-items-center"
                           title={PRSS.formattedDate(createdAt)}
                         >
                           <i className={`fa fa-clock-o mr-2`}></i>
