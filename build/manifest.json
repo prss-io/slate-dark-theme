@@ -1,7 +1,7 @@
 {
   "name": "@hodgef/slate-dark-theme",
   "title": "Slate Dark",
-  "version": "3.0.17",
+  "version": "3.0.19",
   "author": "Francisco Hodge",
   "homepage": "https://github.com/prss-io/slate-dark-theme",
   "license": "MIT",
@@ -79,16 +79,10 @@
   },
   "templates": [
     "blog",
-    "blog",
-    "card",
     "card",
     "docs",
-    "docs",
-    "home",
     "home",
     "page",
-    "page",
-    "post",
     "post"
   ],
   "isSSR": true

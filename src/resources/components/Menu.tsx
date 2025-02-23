@@ -79,6 +79,7 @@ const Menu: FunctionComponent<IProps> = ({
           'menu-item-next': isNext
         })}
         title={node.title || post?.title}
+        key={node.key}
       >
         {renderItemLabel ? (
           renderItemLabel(post)
@@ -108,6 +109,7 @@ const Menu: FunctionComponent<IProps> = ({
           active: node.key === PRSS.getProp('item').uuid,
           expanded: isNodeExpanded(node)
         })}
+        key={node.key}
       >
         {renderItemLabel ? (
           renderItemLabel(post)
