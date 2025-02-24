@@ -94,6 +94,18 @@
   background-position: center;
   margin: 5px;
   border-radius: 20px;
+  position: relative;
+}
+
+.page.page-post .featured-image .featured-image-author {
+  background: rgba(0, 0, 0, .5);
+  border-radius: 5px;
+  bottom: 10px;
+  font-size: 10px;
+  padding: 5px 10px;
+  position: absolute;
+  right: 10px;
+  user-select: none;
 }
 
 .page.page-post .post-date {
