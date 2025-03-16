@@ -189,16 +189,14 @@
 }
 
 .page .card a.card-title {
-  color: inherit;
-  padding: 0;
-  margin: 0;
-  font-size: 22px;
-  font-family: 'Roboto';
-  font-weight: 400;
-  margin-bottom: 10px;
+  color: #fff;
   display: block;
-  line-height: 30px;
-  color: #ffffff;
+  font-family: Roboto;
+  font-size: 25px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  padding: 0;
+  line-height: 36px;
 }
 
 .page .card a.card-image {
@@ -242,7 +240,6 @@
 
 .page .card .card-img-left {
   width: 100%;
-  height: 100%;
   background-size: cover;
   display: block;
   background-color: #252525;

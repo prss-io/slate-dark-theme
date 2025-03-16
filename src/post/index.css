@@ -181,3 +181,7 @@
 .page.page-post main .content .post-inner-content > *:first-child {
   margin-top: 0;
 }
+
+.page.page-post .post-content p > a {
+  text-decoration: underline;
+}

@@ -1,9 +1,13 @@
 .page.page-blog .card {
   border: none;
-  height: 180px;
   border-radius: 20px;
   margin-bottom: 20px;
   padding: 12px;
+}
+
+.page.page-blog .card-body.col {
+  padding: 20px 35px;
+  overflow: inherit;
 }
 
 .page.page-blog .card:last-child {
@@ -25,10 +29,11 @@
 }
 
 .page.page-blog .card-img-left + .card-body a.card-title {
-  white-space: nowrap;
+  white-space: normal;
+  /*white-space: nowrap;
   overflow: hidden;
   max-width: 83%;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;*/
 }
 
 .page.page-blog .card-img-left img {
