@@ -1,6 +1,6 @@
 {
   "name": "@hodgef/slate-dark-theme",
-  "version": "3.0.27",
+  "version": "3.0.28",
   "description": "Slate Dark Theme for PRSS",
   "main": "build/index.js",
   "scripts": {
