@@ -3,6 +3,8 @@
   "type": "blog",
   "parser": "react",
   "isSSR": true,
+  "combinedCSS": true,
+  "clientScript": true,
   "siteVars": {
     "logoImageUrl": {
       "type": "image",

@@ -1,10 +1,5 @@
-import '../resources/styles/common.css';
-import './index.css';
-
 import React from 'react';
 import * as PRSS from 'prss';
-
-import cx from 'classnames';
 
 import Header from '../resources/components/Header';
 import Footer from '../resources/components/Footer';
@@ -20,17 +15,17 @@ const Post = data => {
     'vars'
   ) as any;
 
-  const links = PRSS.getJsonProp('vars.links') as ILink[];
+  //const links = PRSS.getJsonProp('vars.links') as ILink[];
 
   const { content, uuid: postId, title: postTitle, createdAt } = PRSS.getProp(
     'item'
   );
-  const { title, url } = PRSS.getProp('site');
+  //const { title, url } = PRSS.getProp('site');
   const sidebarHtml = PRSS.getProp('sidebarHtml');
-  const headerHtml = PRSS.getProp('headerHtml');
+  // const headerHtml = PRSS.getProp('headerHtml');
 
-  const items = PRSS.getItems('post').filter(item => item.uuid !== postId);
-  const shuffledItem = PRSS.shuffle(items)[0];
+  // const items = PRSS.getItems('post').filter(item => item.uuid !== postId);
+  // const shuffledItem = PRSS.shuffle(items)[0];
 
   return (
     <Page className="page-post">
@@ -46,7 +41,7 @@ const Post = data => {
                       <h1 className="mb-0">{postTitle}</h1>
                       {createdAt && (
                         <div
-                          className="text-muted mt-4 date post-date d-flex align-items-center"
+                          className="text-muted mt-3 date post-date d-flex align-items-center"
                           title={PRSS.formattedDate(createdAt)}
                         >
                           <i className={`fa fa-clock-o mr-2`}></i>
@@ -75,7 +70,7 @@ const Post = data => {
                       <div className="featured-image-author">
                         <span>
                           Photo by{' '}
-                          <a href={featuredImageAuthorLink} target="_blank">
+                          <a href={featuredImageAuthorLink} target="_blank" className="text-white">
                             {featuredImageAuthor} via Pexels
                           </a>
                         </span>
@@ -93,7 +88,7 @@ const Post = data => {
                   />
                 </section>
 
-                {shuffledItem && (
+                {/*shuffledItem && (
                   <section className="mb-3">
                     <h4 className="section-title explore-more">
                       <span>Explore More</span>
@@ -139,7 +134,7 @@ const Post = data => {
                       </div>
                     </div>
                   </section>
-                )}
+                )*/}
               </div>
             </div>
             {isset(sidebarHtml || sidebarAsideHtml) && (
