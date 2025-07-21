@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import * as PRSS from 'prss';
+import * as PRSS from "@prss/ui";
 import cx from 'classnames';
 
 import Header from '../resources/components/Header';
@@ -8,6 +8,8 @@ import Page from '../resources/components/Page';
 import Menu from '../resources/components/Menu';
 import Aside from '../resources/components/Aside';
 import { isset } from '../resources/services/utils';
+
+import ContentRenderer from "@prss/ui/build/ContentRenderer";
 
 const Docs = data => {
   PRSS.init(data);
@@ -172,12 +174,11 @@ const Docs = data => {
                       />
                     )}
 
-                    <div
+                    <ContentRenderer 
+                      content={content}
                       className="post-inner-content mb-5"
-                      dangerouslySetInnerHTML={{
-                        __html: content
-                      }}
                     />
+                    
                     {isset(footerCta) && (
                       <div
                         className="footer-cta"

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as PRSS from 'prss';
+import * as PRSS from "@prss/ui";
 
 import cx from 'classnames';
 
@@ -9,16 +9,18 @@ import Page from '../resources/components/Page';
 import Aside from '../resources/components/Aside';
 import { isset } from '../resources/services/utils';
 
+import ContentRenderer from "@prss/ui/build/ContentRenderer";
+
 const Blog = data => {
   PRSS.init(data);
   (window as any).PRSS = PRSS;
   const { rootPath } = data;
 
-  const { sidebarAsideHtml, blogPosts, currentPage, totalPages } = PRSS.getProp('vars') as any;
+  const { sidebarAsideHtml, blogPosts, currentPage, totalPages, category } = PRSS.getProp('vars') as any;
   const links = PRSS.getJsonProp('vars.links') as ILink[];
-  const { content, title } = PRSS.getProp('item');
+  const { content, title, slug } = PRSS.getProp('item');
   const sidebarHtml = PRSS.getProp('sidebarHtml');
-  const items = PRSS.getItems('post', true, blogPosts);
+  const items = PRSS.getItems('post', true, blogPosts, category);
   const adjustedRootPath = currentPage === 1 ? rootPath : `../${rootPath}`;
 
   return (
@@ -31,10 +33,9 @@ const Blog = data => {
             <div className="col">
               <div className="content">
                 {content && content.trim().length && (
-                  <section
-                    dangerouslySetInnerHTML={{
-                      __html: content
-                    }}
+                  <ContentRenderer 
+                    content={content}
+                    className="content-section"
                   />
                 )}
 
@@ -108,7 +109,7 @@ const Blog = data => {
                     <li className="page-item">
                       <a
                         className="page-link"
-                        href={`${adjustedRootPath}blog/${currentPage - 1 === 1 ? "" : currentPage - 1}`}
+                        href={`${adjustedRootPath}${slug}/${currentPage - 1 === 1 ? "" : currentPage - 1}`}
                       >
                         Previous
                       </a>
@@ -120,7 +121,7 @@ const Blog = data => {
                     return (
                       <li key={i} className="page-item">
                         <a
-                          href={`${pageNumber === 1 ? `${adjustedRootPath}blog/` : `${adjustedRootPath}blog/${pageNumber}/`}`}
+                          href={`${pageNumber === 1 ? `${adjustedRootPath}${slug}/` : `${adjustedRootPath}${slug}/${pageNumber}/`}`}
                           className={cx('page-link', { active: isActive })}
                         >
                           {pageNumber}
@@ -132,7 +133,7 @@ const Blog = data => {
                     <li className="page-item">
                       <a
                         className="page-link"
-                        href={`${adjustedRootPath}blog/${currentPage + 1}`}
+                        href={`${adjustedRootPath}${slug}/${currentPage + 1}`}
                       >
                         Next
                       </a>
