@@ -1,6 +1,6 @@
 {
   "name": "@prss/slate-dark-theme",
-  "version": "3.2.6",
+  "version": "3.2.7",
   "description": "Slate Dark Theme for PRSS",
   "main": "build/index.js",
   "scripts": {
