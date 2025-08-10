@@ -9,7 +9,7 @@ import Page from '../resources/components/Page';
 import Aside from '../resources/components/Aside';
 import { isset } from '../resources/services/utils';
 
-import ContentRenderer from "@prss/ui/build/ContentRenderer";
+import { ContentRenderer } from "@prss/ui";
 
 const Blog = data => {
   PRSS.init(data);
