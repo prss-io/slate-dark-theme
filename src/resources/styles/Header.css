@@ -25,7 +25,7 @@
 
 .page header.page-header .header-nav .navbar-nav,
 .page header.page-header .header-nav .navbar-toggler {
-  background: #252525;
+  background: var(--primary-foreground);
 }
 
 .page header.page-header .header-nav .navbar-toggler {
@@ -59,13 +59,13 @@
 }
 
 .page header.page-header .header-nav.sticky-unset {
-  background: #252525c4;
+  background: var(--primary-foreground);
   backdrop-filter: blur(10px);
   animation: sticky-top-unset 0.5s forwards;
 }
 
 .page header.page-header .header-nav.scrolled {
-  background: #252525c4;
+  background: var(--primary-foreground);
   backdrop-filter: blur(10px);
   animation: sticky-top-set 0.5s forwards;
   position: fixed;
@@ -90,7 +90,7 @@
 
 @media (max-width: 991.98px) {
   .page header.page-header .header-nav .navbar-collapse {
-    background: #252525;
+    background: var(--primary-foreground);
     position: absolute;
     top: 110%;
     width: 100%;
@@ -116,7 +116,7 @@
 
 @keyframes sticky-top-unset {
   0% {
-    background: #252525c4;
+    background: var(--primary-foreground);
     backdrop-filter: blur(10px);
   }
   100% {

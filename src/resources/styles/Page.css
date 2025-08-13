@@ -42,7 +42,7 @@
   word-break: break-all;
   word-wrap: break-word;
   color: #eaeaea;
-  background-color: #252525;
+  background-color: var(--primary-foreground);
   border: none;
   border-radius: 3px;
 }
@@ -57,7 +57,7 @@
 
 .page main {
   min-height: calc(100vh - (350px + 65px));
-  background: #1b1b1b;
+  background: var(--background-color);
   margin-bottom: 20vh;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .page main .main-container {
-  background: #1b1b1b;
+  background: var(--background-color);
   z-index: 1;
   margin-bottom: 40px;
   padding: 0;
@@ -123,7 +123,7 @@
 }
 
 .page .jumbotron {
-  background-color: #252525;
+  background-color: var(--primary-foreground);
 }
 
 .page .feat-jumbotron {
@@ -171,8 +171,7 @@
   overflow: hidden;
   position: relative;
   padding: 3px;
-  border-radius: 20px;
-  background-color: #252525;
+  background-color: var(--primary-foreground);
 }
 
 .page .card a.card-title {
@@ -191,11 +190,10 @@
   text-decoration: none;
   overflow: hidden;
   display: block;
-  background-color: #252525;
+  background-color: var(--primary-foreground);
   height: 200px;
   backface-visibility: hidden;
   overflow: hidden;
-  border-radius: 20px;
 }
 
 .page .card a.card-image .card-img-top {
@@ -230,8 +228,7 @@
   width: 100%;
   background-size: cover;
   display: block;
-  background-color: #252525;
-  border-radius: 20px;
+  background-color: var(--primary-foreground);
   overflow: hidden;
 }
 
@@ -282,7 +279,6 @@
 
 .page.page-blog .blog-items .card-img-left {
   max-width: 250px;
-  border-radius: 20px;
   overflow: hidden;
   min-width: 250px;
   height: 250px;
@@ -329,7 +325,7 @@
 }
 
 .page.page-blog .pagination a.page-link {
-  background-color: #252525;
+  background-color: var(--primary-foreground);
   position: relative;
   display: block;
   padding: .5rem .75rem;
@@ -434,9 +430,7 @@
 
 .page.page-docs .post-title-container {
   padding: 25px 40px;
-  background: #252525;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  background: var(--primary-foreground);
 }
 
 .page.page-docs .docs-sidebar {
@@ -503,7 +497,7 @@
 
 .page.page-docs .menu-title {
   padding: 10px 40px;
-  background: #252525c4;
+  background: var(--primary-foreground);
   backdrop-filter: blur(10px);
   color: white;
   cursor: pointer;
@@ -552,7 +546,7 @@
 }
 
 .page.page-docs .small-width.menu-show .docs-sidebar {
-  background: #252525;
+  background: var(--primary-foreground);
   height: calc(100vh - 80px);
 }
 
@@ -576,7 +570,6 @@
 
 .page.page-home .card-wrapper .card {
   position: relative;
-  padding: 12px;
   flex: 1;
 }
 
@@ -687,7 +680,6 @@
   background-repeat: no-repeat;
   background-position: top;
   margin: 5px;
-  border-radius: 20px;
   position: relative;
 }
 
@@ -759,7 +751,7 @@
 }
 
 .page.page-post .card {
-  background: #252525;
+  background: var(--primary-foreground);
   border: none;
 }
 
