@@ -30,6 +30,10 @@
       "type": "string",
       "description": "Max length for the post's content in article cards"
     },
+    "docsImageUrl": {
+      "type": "image",
+      "description": "Image URL to show in documentation pages instead of title"
+    },
     "sidebarMenu": {
       "type": "string",
       "description": "Menu to be used in the page's sidebar"

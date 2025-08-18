@@ -1,12 +1,12 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React from 'react';
 import * as PRSS from "@prss/ui";
 import cx from 'classnames';
 
 import Header from '../resources/components/Header';
 import Footer from '../resources/components/Footer';
 import Page from '../resources/components/Page';
-import Menu from '../resources/components/Menu';
 import Aside from '../resources/components/Aside';
+import { Menu } from '@prss/ui';
 import { isset } from '../resources/services/utils';
 
 import { ContentRenderer } from "@prss/ui";
@@ -20,8 +20,10 @@ const Docs = data => {
     sidebarMenu,
     footerCta,
     warningHtml,
-    contentFooterHtml
-  } = PRSS.getProp('vars') as IVars;
+    contentFooterHtml,
+    heroTitle,
+    docsImageUrl
+  } = PRSS.getProp('vars');
 
   const { content, uuid: postId, title: postTitle } = PRSS.getProp('item');
 
@@ -29,84 +31,48 @@ const Docs = data => {
 
   const items = PRSS.getItems('post').filter(item => item.uuid !== postId);
 
-  const [menuTop, setMenuTop] = useState(0);
-  const [menuHeight, setMenuHeight] = useState<number>(0);
-  const [smallWidthMode, setSmallWidthMode] = useState(false);
-  const [menuFixed, setMenuFixed] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
-
-  const FEATURED_IMG_HEIGHT = featuredImageUrl ? 250 : 0;
-  const HEADER_HEIGHT = 80;
-  const TITLE_HEIGHT = 155;
-  const COMBINED_HEADER_HEIGHT =
-    FEATURED_IMG_HEIGHT + HEADER_HEIGHT + TITLE_HEIGHT - 20;
-
-  const onScroll = scrollTop => {
-    const windowWidth = window.innerWidth;
-    const isSmallWidth = windowWidth <= 768;
-    const menuScrollTop =
-      scrollTop > COMBINED_HEADER_HEIGHT
-        ? scrollTop - COMBINED_HEADER_HEIGHT
-        : 0;
-
-    setSmallWidthMode(isSmallWidth);
-    setMenuFixed(!!menuScrollTop);
-    handleSidebarMaxHeight();
+  // Helper function to check if a menu node is active
+  const isNodeActive = (node: any): boolean => {
+    if (!node) return false;
+    return node.isActive || (node.children && node.children.some(isNodeActive));
   };
 
-  const onResize = e => {
-    handleSmallWidth();
-    handleSidebarMaxHeight();
+  // Custom render function for menu items with parent activation
+  const renderDocMenuItem = (node: any, level: number = 0) => {
+    const isActive = isNodeActive(node);
+    const hasActiveChild = node.children && node.children.some(isNodeActive);
+    
+    return (
+      <li key={node.id} className={isActive ? 'active' : ''}>
+        <a 
+          href={node.url} 
+          className={hasActiveChild ? 'has-active-child' : ''}
+        >
+          {node.title}
+        </a>
+        {node.children && (
+          <ul>
+            {node.children.map((child: any) => renderDocMenuItem(child, level + 1))}
+          </ul>
+        )}
+      </li>
+    );
   };
 
-  const handleSmallWidth = () => {
-    const windowWidth = window.innerWidth;
-    const isSmallWidth = windowWidth <= 768;
-
-    if (!isSmallWidth) {
-      setSmallWidthMode(false);
-      setShowMenu(false);
-    } else {
-      setSmallWidthMode(true);
-    }
+  // Custom render function for prev/next menu items
+  const renderPrevNextItem = (node: any) => {
+    return (
+      <li key={node.id} className={node.rel}>
+        <a href={node.url}>{node.title}</a>
+      </li>
+    );
   };
-
-  const handleSidebarMaxHeight = () => {
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const isSmallWidth = windowWidth <= 768;
-    const winHeightMinusHeader = windowHeight - HEADER_HEIGHT;
-    const contentElem = document.querySelector('.content') as any;
-    const contentElemHeight = contentElem ? contentElem.offsetHeight + 40 : 0;
-
-    const menuHeight = isSmallWidth
-      ? null
-      : Math.max(winHeightMinusHeader, contentElemHeight);
-    setMenuHeight(menuHeight);
-  };
-
-  const toggleMenuShow = () => {
-    if (smallWidthMode) {
-      setShowMenu(!showMenu);
-    }
-  };
-
-  useEffect(() => {
-    handleSmallWidth();
-    handleSidebarMaxHeight();
-  });
 
   return (
     <Page className="page-docs">
-      <Header onScrollCallback={onScroll} onResizeCallback={onResize} />
+      <Header />
       <main>
-        <div
-          className={cx('container main-container', {
-            'small-width': smallWidthMode,
-            'menu-fixed': menuFixed,
-            'menu-show': showMenu
-          })}
-        >
+        <div className="container main-container">
           {featuredImageUrl && (
             <div
               className="featured-image"
@@ -119,7 +85,16 @@ const Docs = data => {
           <div className="post-title-container">
             <div className="row">
               <div className="col-12 col-lg d-lg-flex flex-column justify-content-center">
-                <h1 className="mb-0">{postTitle}</h1>
+                {docsImageUrl ? (
+                  <img 
+                    src={docsImageUrl} 
+                    alt={heroTitle || postTitle}
+                    className="docs-image docs-header-image mb-0"
+                    style={{maxHeight: '96px', width: 'auto'}}
+                  />
+                ) : (
+                  <h1 className="mb-0">{heroTitle || postTitle}</h1>
+                )}
               </div>
               {PRSS.getProp('vars')?.asideHtml && (
                 <div className="col-12 col-lg-4 mt-3 mt-lg-0">
@@ -131,36 +106,22 @@ const Docs = data => {
 
           <div className="row mt-2">
             {isset(sidebarMenu) && (
-              <div
-                className="col-3 docs-sidebar"
-                style={{
-                  marginTop: menuTop ? menuTop + 'px' : null,
-                  maxHeight: menuHeight ? menuHeight + 'px' : null
-                }}
-              >
-                <div className="docs-sidebar-inner-container">
+              <div className="col-3 docs-sidebar">
+                <div className="menu-title" data-mobile-menu-toggle="docs-sidebar">
+                  <i className="fa fa-caret-down mr-2"></i>
+                  <span>Navigate</span>
+                </div>
+                <div className="docs-sidebar-inner-container" data-mobile-menu="docs-sidebar">
                   <Menu
                     name={sidebarMenu}
                     ulClassName="sidebar-menu"
-                    prependedComponent={
-                      <Fragment>
-                        {smallWidthMode && (
-                          <div
-                            className="menu-title"
-                            onClick={e => toggleMenuShow()}
-                          >
-                            <i className={`fa fa-caret-down mr-2`}></i>
-                            <span>Navigate</span>
-                          </div>
-                        )}
-                      </Fragment>
-                    }
+                    renderItem={renderDocMenuItem}
                   />
                 </div>
               </div>
             )}
 
-            <div className={`col ${isset(sidebarMenu) ? 'col-md-9' : ''}`}>
+            <div className={`col ${isset(sidebarMenu) ? 'col-lg-9' : ''}`}>
               <div className="content">
                 <div className="content-top">
                   <section className="post-content mb-3">
@@ -195,6 +156,7 @@ const Docs = data => {
                         name={sidebarMenu}
                         ulClassName="docs-footer-menu"
                         mode="prev-next"
+                        renderItem={renderPrevNextItem}
                       />
                     </section>
                   )}

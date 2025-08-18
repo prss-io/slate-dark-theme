@@ -78,6 +78,7 @@
 .page main .content .post-content img[alt] {
   max-width: 100%;
   height: auto !important;
+  display: inline-block;
 }
 
 .page main .content .card.text-white blockquote footer {
@@ -461,6 +462,12 @@
   overflow: hidden;
 }
 
+@media (min-width: 1200px) {
+  .page.page-docs .docs-sidebar ul li {
+    max-width: 250px !important;
+  }
+}
+
 .page.page-docs .docs-sidebar ul li ul {
   border: 1px solid rgba(255, 255, 255, 0.15);
   margin-left: 35px;
@@ -647,11 +654,6 @@
 
 .page.page-post strong {
   font-weight: 700;
-}
-
-.page.page-post iframe {
-  width: 100%;
-  min-height: 300px;
 }
 
 .page.page-post main .main-container section,

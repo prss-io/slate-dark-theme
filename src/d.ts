@@ -5,6 +5,7 @@ interface IVars {
     featuredImageAlt?: string;
     truncateTitleLength?: string;
     truncateContentLength?: string;
+    docsImageUrl?: string;
 
     /**
      * Links

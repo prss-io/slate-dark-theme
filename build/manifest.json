@@ -1,7 +1,7 @@
 {
   "name": "@prss/slate-dark-theme",
   "title": "Slate Dark",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "author": "Francisco Hodge",
   "homepage": "https://github.com/prss-io/slate-dark-theme",
   "description": "Slate Dark Theme for PRSS",
@@ -32,6 +32,10 @@
     "truncateContentLength": {
       "type": "string",
       "description": "Max length for the post's content in article cards"
+    },
+    "docsImageUrl": {
+      "type": "image",
+      "description": "Image URL to show in documentation pages instead of title"
     },
     "sidebarMenu": {
       "type": "string",
